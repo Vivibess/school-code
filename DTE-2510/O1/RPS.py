@@ -18,8 +18,10 @@ while True:
             break
         elif user_choice == "exit":
             quit()
+        else:
+            print("That's not a valid input, please try again.")
     except ValueError:
-        print("That's not rock, paper, or scissors, please try again.")
+        print("That's not a valid input, please try again.")
 
 print("The PC chose", ["rock", "paper", "scissors"][pc_choice], ", and you chose", ["rock", "paper", "scissors"][user_choice])
 print(rps_game(pc_choice, user_choice))
