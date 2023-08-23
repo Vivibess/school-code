@@ -16,8 +16,6 @@ while True:
         user_choice = int(input("Please choose rock, paper, or scissors as 0, 1, or 2\n"))
         if user_choice in rps:
             break
-        elif user_choice == "exit":
-            quit()
         else:
             print("That's not a valid input, please try again.")
     except ValueError:
