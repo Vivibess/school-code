@@ -2,8 +2,6 @@ def calc_checksum(input):
     checksum = 0
     for i in range(len(str(input))):
         checksum += int(str(input)[i]) * (i+1)
-        print(str(input)[i], "*", (i+1), "=", (int(str(input)[i]) * (i+1)))
-        print(checksum)
     if checksum % 11 == 10:
         return "X"
     else:
