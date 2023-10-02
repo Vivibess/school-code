@@ -1,19 +1,31 @@
+def main():
+    genome = genome_input()
+    genes = find_genes(genome)
+    
+    print(genes.replace(',','\n'))
+
+def genome_input():
+    while True:
+        genome = str(input("Enter a genome string: "))
+        if genome != '':
+            break
+        else:
+            print("Please enter a not-empty string.")
+    return genome.upper()
+
 def find_genes(genome):
     triplets = ["ATG", "TAG", "TAA", "TGA"]
-    index = 0
-    to_add = 0
     genes = []
-    #read in slices of 3
-    [genome[i:3] for gene in zip(*(iter(genome),) * 3)]:
-        print(gene)
-        if gene == 'ATG' and to_add == 0:
-            to_add = 1
-        if gene in triplets and to_add == 1:
-            to_add = 0
-        elif to_add == 1:
-            genes.append(gene)
-    print(genes)
+    tempgenes = ''
+    # read in slices of 3
+    for i in range(0, len(genome)):
+        if genome[i:i+3] == 'ATG':
+            for j in range(i+3, len(genome), 3):
+                if genome[j:j+3] in triplets:
+                    genes.append(tempgenes)
+                    tempgenes = ''
+                    break
+                tempgenes = tempgenes + genome[j:j+3]
+    return ','.join(genes)
 
-genome = "TTATGTTTTAAGGATGGGGCGTTAGTT"
-
-find_genes(genome)
+main()
